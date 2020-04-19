@@ -24,7 +24,7 @@ public class FromApp {
         String from = "FROM Employee";
         // String from2 = "from Employee"; it is case insensitive
         // in case of entity name collision the entity name has to
-        // be given including the package name 
+        // be given including the package name
 
         Query query = session.createQuery(from);
         List<Employee> resultList = query.getResultList();
