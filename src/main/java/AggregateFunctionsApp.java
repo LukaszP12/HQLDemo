@@ -2,8 +2,11 @@ import Entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-public class DeleteApp {
+import java.util.List;
+
+public class AggregateFunctionsApp {
 
     public static void main(String[] args) {
         Configuration conf = new Configuration().configure("hibernate.cfg.xml");
@@ -16,13 +19,13 @@ public class DeleteApp {
 
         session.beginTransaction();
 
-        int id = 123; // Id to be deleted
-
-        String delete = "delete from Employee where Employee_id:=id";
-
-        session.createQuery(delete).setParameter("Employee_id", id).executeUpdate(); // executeUpdate returns the number of affected rows
+        String avg = "select avg(e.sal) from Employee e";
+        Query query = session.createQuery(avg);
+        Integer singleResult = (Integer) query.getSingleResult();
 
         session.getTransaction().commit();
+
+        System.out.println("The result of the query is: " + singleResult);
 
         session.close();
 
