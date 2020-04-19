@@ -21,7 +21,7 @@ public class AggregateFunctionsApp {
 
         String avg = "select avg(e.sal) from Employee e";
         Query query = session.createQuery(avg);
-        Integer singleResult = (Integer) query.getSingleResult();
+        Double singleResult = (Double) query.getSingleResult();
 
         session.getTransaction().commit();
 
