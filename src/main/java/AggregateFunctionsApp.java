@@ -27,6 +27,14 @@ public class AggregateFunctionsApp {
         Query query1 = session.createQuery(sum);
         Long singleResult1 = (Long) query1.getSingleResult();
 
+        String min = "select min(e.sal) from Employee e";
+        Query query2 = session.createQuery(min);
+        Integer singleResult2 = (Integer) query2.getSingleResult();
+
+        String max = "select max(e.sal) from Employee e";
+        Query query3 = session.createQuery(max);
+        Integer singleResult3 = (Integer) query3.getSingleResult();
+
         session.getTransaction().commit();
 
         System.out.println("The result of the query is: " + singleResult);
