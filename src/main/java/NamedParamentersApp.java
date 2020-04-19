@@ -4,6 +4,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
+import java.util.List;
+
 public class NamedParamentersApp {
 
     public static void main(String[] args) {
@@ -25,6 +27,8 @@ public class NamedParamentersApp {
         Query namedParameterQuery = session.createQuery(namedParameterString);
         namedParameterQuery.setParameter("firstName",employeeFirstName);
         namedParameterQuery.setParameter("lastName",employeeLastName);
+
+        List<Object[]> resultList = namedParameterQuery.getResultList();
 
         session.getTransaction().commit();
 
