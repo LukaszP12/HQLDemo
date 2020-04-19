@@ -23,6 +23,10 @@ public class AggregateFunctionsApp {
         Query query = session.createQuery(avg);
         Double singleResult = (Double) query.getSingleResult();
 
+        String sum = "select sum(e.sal) from Employee e";
+        Query query1 = session.createQuery(sum);
+        Long singleResult1 = (Long) query1.getSingleResult();
+
         session.getTransaction().commit();
 
         System.out.println("The result of the query is: " + singleResult);
